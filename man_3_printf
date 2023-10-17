@@ -1,0 +1,127 @@
+.\" Manpage for _printf.
+.TH _printf 3 "16 October 2023" "1.0" "Program Manual for _printf"
+.SH NAME
+ _printf - formatted output conversion and print data.
+.SH SYNOPSIS
+.nf
+.BI printf (FORMAT, ARGUMENT)...
+.PP
+.BI "#include 'main.h'
+.BI "#include <stdarg.h>"
+.BI "#include <unistd.h>"
+.PP
+.BI "int _printf(const char *format, ...);"
+.BI "int print_pr(va_list __attribute__((unused)), char *, unsigned int);"
+.BI "int print_ch(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_st(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_in(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_bn(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_un(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_oc(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_he(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_up(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_us(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_ad(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_re(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int print_ro(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinlin(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinlun(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinloc(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinlhe(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinlup(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinhin(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinhun(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinhoc(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinhhe(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinhup(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinpin(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinnoc(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinnhe(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinnup(va_list arguments, char *buf, unsigned int ibuf);"
+.BI "int prinsin(va_list arguments, char *buf, unsigned int ibuf);"
+.PP
+.BI "int (*get_print_fun(const char *s, int index))(va_list, char *, unsigned int);"
+.BI "int ev_print_fun(const char *s, int index);"
+.PP
+.BI "unsigned int handl_bu(char *buf, char c, unsigned int ibuf);"
+.BI "int print_bu(char *buf, unsigned int nbuf);"
+.PP
+.BI "char *fill_binary_arra(char *binary, long int int_in, int isneg, int limit);"
+.BI "char *fill_oct_arra(char *bnr, char *oct);"
+.BI "char *fill_long_oct_arra(char *bnr, char *oct);"
+.BI "char *fill_short_oct_arra(char *bnr, char *oct);"
+.BI "char *fill_hex_arra(char *bnr, char *hex, int isupp, int limit);"
+.PP
+.SH DESCRIPTION
+The output function _printf() produce output according to a format. the function _printf converts the char strings that receives as argument and prints it on the standard output.
+.SH RETURN VALUE
+Returns the number of all the chars printed, excluding the NULL byte used to end output to strings.
+.SH Format String Format
+The format string is a char string, which contains two types of directives: ordinary chars which are coppied to the output stream; and conversion specifiers. Each conversion spec is introduced by the character %, and ends with a conversion specifier.
+.SH Conversion Specifiers
+This are the chars that specifies the type of conversion to be applied. The conversion specifiers and their meanings are: 
+.TP
+.B c
+.R The \fIint\fR argument is converted to an \fIunsigned char\fR, and the resulting char is written.
+.TP
+.B s
+.R The \fIconst char *\fR argument is a pointer to an array of chars, that converts the corresponding argument to a char string.
+.TP
+.B d, i
+.R The \fIint\fR argument is converted to signed decimal notation.
+.TP
+.B o, u, x, X
+.R The \fIunsigned int\fR argument is converted to unsigned octal \fIo\fR (base 8 number), unsigned decimal \fIu\fR (base 10 number), unsigned hexadecimal \fIx\fR (base 16 number with lowercase letters) and unsigned hexadecimal \fIX\fR (base 16 number with uppercase letters).
+.TP
+.B %, %%
+.R If only the \fI%\fR char is written no argument is converted. The complete conversion spec is \fI%%\fR, that returns the actual sign if there in front.
+.TP
+.B S
+.R The \fIconst char\fR argument is a pointer to an array of chars, that converts the corresponding argument to a char st\
+ring, with non-printable chars (0 < ASCII value < 32 or >= 127).
+.TP
+.B p
+.R The \fIvoid * pointer\fR argument is printed in hexadecimal.
+.TP
+.B S
+.R The \fIconst char\fR argument is a pointer to an array
+.SH The flag chars
+The character \fI%\fR is followed by zero the following flags:
+.TP
+.B +
+.R A sign \fI+\fR or \fI-\fR will be placed before a number followed by a signed conversion.
+.TP
+.B #
+.R Print number in hexadecimal, upeercase hexadecimal and octal where the first char of the output string is made zero.
+.TP
+.B ' '
+.R A space in blank should be left before a positive number followed by a signed conversion.
+.SH NOTES.R A space in blank should be left before a positive number followed by a signed conversion.
+.SH NOTES
+.R The \fB_printf()\fR is a project collaboration by \fBMohammed almahadi Mohammed\fR student of the ALX Software Engineering Programme at \fBHolberton School\fR.
+.SH BUGS
+.R In process
+.SH EXAMPLE
+.R To print the the string \fBHello Holberton!\fR and its length in decimal.
+
+#include ''holberton.h''
+
+int main(void)
+
+{
+
+	int length;
+
+	_printf(''%s'', ''Hello, Holberton!'')
+
+	_printf(''Hello Holberton! contains %d characters'', length);
+
+	length = _printf(''Hello Holberton!'');
+
+	return (0);
+
+}
+.SH SEE ALSO
+.R printf(3)
+.SH AUTHOR
+Written by \fBMohammed Almahadi Mohammed\fR.
