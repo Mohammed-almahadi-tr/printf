@@ -11,7 +11,7 @@ unsigned int handl_bu(char *buf, char c, unsigned int ibuf)
 {
 	if (ibuf == 1024)
 	{
-		print_buf(buf, ibuf);
+		print_bu(buf, ibuf);
 		ibuf = 0;
 	}
 	buf[ibuf] = c;

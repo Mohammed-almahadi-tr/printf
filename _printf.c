@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (!format[in])
 		return (0);
-	for (i = 0; format && format[in]; i++)
+	for (in = 0; format && format[in]; in++)
 	{
 		if (format[in] == '%')
 		{
@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 				return (-1);
 			}
 			else
-			{	function = get_print_func(format, in + 1);
+			{	function = get_print_fun(format, in + 1);
 				if (function == NULL)
 				{
 					if (format[in + 1] == ' ' && !format[in + 2])

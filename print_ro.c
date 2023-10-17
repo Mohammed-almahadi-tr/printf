@@ -30,7 +30,7 @@ int print_ro(va_list arguments, char *buf, unsigned int ibuf)
 			if (str[i] == alf[j])
 			{
 				k = 1;
-				ibuf = handl_buf(buf, rot[j], ibuf);
+				ibuf = handl_bu(buf, rot[j], ibuf);
 				break;
 			}
 		}
